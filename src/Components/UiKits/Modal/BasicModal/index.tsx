@@ -1,7 +1,6 @@
 import CommonCardHeader from "@/CommonComponent/CommonCardHeader";
 import { BasicModal } from "@/Constant";
 import { Card, CardBody, Col } from "reactstrap";
-import OpenModalinvento from "./OpenModalinvento";
 import ScrollingModal from "./ScrollingModal";
 import { SimpleModal } from "./SimpleModal";
 import { ToolTipAndPopover } from "./ToolTipAndPopover";
@@ -16,7 +15,7 @@ const BasicModalCart = () => {
           <SimpleModal />
           <ScrollingModal />
           <ToolTipAndPopover />
-          <OpenModalinvento />
+      
         </CardBody>
       </Card>
     </Col>
