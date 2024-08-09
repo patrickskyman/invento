@@ -15,23 +15,10 @@ export const MenuList: MenuItem[] | undefined = [
         children: [
           { path: "/inventory/add_product", title: "Add Product", type: "link" },
           { path: "/inventory/product_list", title: "Product List", type: "link" },
-          { path: "/inventory/expired-products", title: "Expired Products", type: "link" },
-          { path: "/inventory/low-stocks", title: "Low Stocks", type: "link" },
         ],
       },
-      { path: "", icon: "email", title: "Letter Box", type: "link", id: 7 },
       { path: "/inventory/pos", icon: "form", title: "POS", type: "link", id: 87 },
-      {
-        title: "Variants",
-        id: 5,
-        icon: "project",
-        type: "sub",
-        children: [
-          { path: "/inventory/units", title: "Units", type: "link" },
-          { path: "/inventory/variant-attributes", title: "Variant Attributes", type: "link" },
-          { path: "/inventory/warranties", title: "Warranties", type: "link" },
-        ],
-      },
+
       {
         title: "Printing",
         id: 8,
@@ -43,14 +30,28 @@ export const MenuList: MenuItem[] | undefined = [
         ],
       },
       {
+        title: "Variants",
+        id: 5,
+        icon: "project",
+        type: "sub",
+        children: [
+          { path: "#", title: "Units", type: "link" },
+          { path: "#", title: "Variant Attributes", type: "link" },
+          { path: "#", title: "Warranties", type: "link" },
+          { path: "#", icon: "email", title: "Letter Box", type: "link", id: 7 },
+        ],
+      },
+      {
         title: "Stock",
         id: 9,
         icon: "form",
         type: "sub",
         children: [
-          { path: "/stock/manage-stock", title: "Manage Stock", type: "link" },
-          { path: "/stock/stock-adjustment", title: "Stock Adjustment", type: "link" },
-          { path: "/stock/stock-transfer", title: "Stock Transfer", type: "link" },
+          { path: "#", title: "Manage Stock", type: "link" },
+          { path: "#", title: "Stock Adjustment", type: "link" },
+          { path: "#", title: "Stock Transfer", type: "link" },
+          { path: "#", title: "Expired Products", type: "link" },
+          { path: "#", title: "Low Stocks", type: "link" },
         ],
       },
       {
@@ -59,11 +60,11 @@ export const MenuList: MenuItem[] | undefined = [
         icon: "table",
         type: "sub",
         children: [
-          { path: "/sales/sales", title: "Sales", type: "link" },
-          { path: "/sales/invoices", title: "Invoices", type: "link" },
-          { path: "/sales/sales-return",  title: "Sales Return", type: "link" },
-          { path: "/sales/quotation", title: "Quotation", type: "link" },
-          { path: "/sales/pos", title: "POS", type: "link" },
+          { path: "#", title: "Sales", type: "link" },
+          { path: "#", title: "Invoices", type: "link" },
+          { path: "#",  title: "Sales Return", type: "link" },
+          { path: "#", title: "Quotation", type: "link" },
+          { path: "#", title: "POS", type: "link" },
         ],
       },
       {
@@ -72,7 +73,7 @@ export const MenuList: MenuItem[] | undefined = [
         icon: "ui-kits",
         type: "sub",
         children: [
-          { path: "/promo/coupons", title: "Coupons", type: "link" },
+          { path: "#", title: "Coupons", type: "link" },
         ],
       },
       {
@@ -81,9 +82,9 @@ export const MenuList: MenuItem[] | undefined = [
         icon: "bonus-kit",
         type: "sub",
         children: [
-          { path: "/purchases/purchases", title: "Purchases", type: "link" },
-          { path: "/purchases/purchase-order",  title: "Purchase Order", type: "link" },
-          { path: "/purchases/purchase-return",  title: "Purchase Return", type: "link" },
+          { path: "#", title: "Purchases", type: "link" },
+          { path: "#",  title: "Purchase Order", type: "link" },
+          { path: "#",  title: "Purchase Return", type: "link" },
         ],
       },
       {
@@ -92,8 +93,8 @@ export const MenuList: MenuItem[] | undefined = [
         icon: "icons",
         type: "sub",
         children: [
-          { path: "/expenses",title: "Expenses", type: "link" },
-          { path: "/expense-category", title: "Expense Category", type: "link" },
+          { path: "#",title: "Expenses", type: "link" },
+          { path: "#", title: "Expense Category", type: "link" },
         ],
       },
       {
@@ -102,10 +103,10 @@ export const MenuList: MenuItem[] | undefined = [
         icon: "button",
         type: "sub",
         children: [
-          { path: "/peoples/customers",  title: "Customers", type: "link" },
-          { path: "/peoples/suppliers", title: "Suppliers", type: "link" },
-          { path: "/peoples/stores",  title: "Stores", type: "link" },
-          { path: "/peoples/warehouses",  title: "Warehouses", type: "link" },
+          { path: "#",  title: "Customers", type: "link" },
+          { path: "#", title: "Suppliers", type: "link" },
+          { path: "#",  title: "Stores", type: "link" },
+          { path: "#",  title: "Warehouses", type: "link" },
         ],
       },
       {
@@ -114,7 +115,7 @@ export const MenuList: MenuItem[] | undefined = [
         icon: "learning",
         type: "others",
         children: [
-          { path: "/employees", title: "Employees", type: "link" },
+          { path: "#", title: "Employees", type: "link" },
         ],
       },
       {
@@ -123,16 +124,16 @@ export const MenuList: MenuItem[] | undefined = [
         icon: "gallery",
         type: "sub",
         children: [
-          { path: "/reports/sales", title: "Sales Report", type: "link" },
-          { path: "/reports/purchase", title: "Purchase Report", type: "link" },
-          { path: "/reports/inventory", title: "Inventory Report", type: "link" },
-          { path: "/reports/invoice",  title: "Invoice Report", type: "link" },
-          { path: "/reports/supplier", title: "Supplier Report", type: "link" },
-          { path: "/reports/customer", title: "Customer Report", type: "link" },
-          { path: "/reports/expense", title: "Expense Report", type: "link" },
-          { path: "/reports/income",  title: "Income Report", type: "link" },
-          { path: "/reports/tax", title: "Tax Report", type: "link" },
-          { path: "/reports/profit-loss", title: "Profit & Loss", type: "link" },
+          { path: "#", title: "Sales Report", type: "link" },
+          { path: "#", title: "Purchase Report", type: "link" },
+          { path: "#", title: "Inventory Report", type: "link" },
+          { path: "#",  title: "Invoice Report", type: "link" },
+          { path: "#", title: "Supplier Report", type: "link" },
+          { path: "#", title: "Customer Report", type: "link" },
+          { path: "#", title: "Expense Report", type: "link" },
+          { path: "#",  title: "Income Report", type: "link" },
+          { path: "#", title: "Tax Report", type: "link" },
+          { path: "#", title: "Profit & Loss", type: "link" },
         ],
       },
       {
@@ -141,9 +142,9 @@ export const MenuList: MenuItem[] | undefined = [
         icon: "blog",
         type: "sub",
         children: [
-          { path: "/user-management/users", title: "Users", type: "link" },
-          { path: "/user-management/roles-permissions", title: "Roles & Permissions", type: "link" },
-          { path: "/user-management/delete-account-request",title: "Delete Account Request", type: "link" },
+          { path: "#", title: "Users", type: "link" },
+          { path: "#", title: "Roles & Permissions", type: "link" },
+          { path: "#",title: "Delete Account Request", type: "link" },
         ],
       },
       {
@@ -152,12 +153,12 @@ export const MenuList: MenuItem[] | undefined = [
         icon: "knowledgebase",
         type: "sub",
         children: [
-          { path: "/settings/general", title: "General Settings", type: "link" },
-          { path: "/settings/website",  title: "Website Settings", type: "link" },
-          { path: "/settings/system",  title: "System Settings", type: "link" },
-          { path: "/settings/financial", title: "Financial Settings", type: "link" },
-          { path: "/settings/other",  title: "Other Settings", type: "link" },
-          { path: "/auth/login",  title: "Logout", type: "link" },
+          { path: "#", title: "General Settings", type: "link" },
+          { path: "#",  title: "Website Settings", type: "link" },
+          { path: "#",  title: "System Settings", type: "link" },
+          { path: "#", title: "Financial Settings", type: "link" },
+          { path: "#",  title: "Other Settings", type: "link" },
+          { path: "#",  title: "Logout", type: "link" },
         ],
       },
 
