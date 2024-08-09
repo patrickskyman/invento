@@ -14,9 +14,9 @@ const RevenueByCategory = () => {
     const fetchRevenueData = async () => {
       try {
         const [salesResponse, productsResponse, categoriesResponse] = await Promise.all([
-          axios.get("http://127.0.0.1:8000/api/sales/"),
-          axios.get("http://127.0.0.1:8000/api/products/"),
-          axios.get("http://127.0.0.1:8000/api/categories/"),
+          axios.get("https://inventoryr.online/api/sales/"),
+          axios.get("https://inventoryr.online/api/products/"),
+          axios.get("https://inventoryr.online/api/categories/"),
         ]);
 
         const salesData = salesResponse.data;

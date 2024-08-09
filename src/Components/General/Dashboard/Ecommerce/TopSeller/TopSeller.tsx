@@ -11,11 +11,11 @@ const TopSeller = () => {
   useEffect(() => {
     const fetchTopSellers = async () => {
       try {
-        const salesResponse = await axios.get('http://127.0.0.1:8000/api/sales/');
+        const salesResponse = await axios.get('https://inventoryr.online/api/sales/');
         const salesData = salesResponse.data;
 
         // Fetch product data
-        const productsResponse = await axios.get('http://127.0.0.1:8000/api/products/');
+        const productsResponse = await axios.get('https://inventoryr.online/api/products/');
         const productsData = productsResponse.data;
 
         // Calculate revenue for each product

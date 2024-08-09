@@ -26,7 +26,7 @@ const ProductListTableAction = ({ product }) => {
 
   const handleDeleteConfirm = async () => {
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/products/${product.id}/`);
+      await axios.delete(`https://inventoryr.online/api/products/${product.id}/`);
       handleDeleteModalToggle();
       // Optional: Add a callback or state update to refresh the product list
     } catch (error) {

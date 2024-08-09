@@ -16,10 +16,10 @@ const SalesStatistic = () => {
   useEffect(() => {
     const fetchSalesData = async () => {
       try {
-        const salesResponse = await axios.get('http://127.0.0.1:8000/api/sales/');
+        const salesResponse = await axios.get('https://inventoryr.online/api/sales/');
         setSalesData(salesResponse.data);
 
-        const productsResponse = await axios.get('http://127.0.0.1:8000/api/products/');
+        const productsResponse = await axios.get('https://inventoryr.online/api/products/');
         setProductsData(productsResponse.data);
 
         // Calculate total orders value and total customers

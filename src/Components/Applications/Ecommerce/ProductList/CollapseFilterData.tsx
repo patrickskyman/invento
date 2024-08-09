@@ -10,7 +10,7 @@ export const CollapseFilterData = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/api/categories/");
+        const response = await axios.get("https://inventoryr.online/api/categories/");
         const categories = response.data.map((category: { name: any; }) => category.name);
         setFilterData([
           {

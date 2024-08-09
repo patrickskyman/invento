@@ -31,7 +31,7 @@ const RecentCustomers = () => {
   useEffect(() => {
     const fetchRecentOrders = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/orders/');
+        const response = await axios.get('https://inventoryr.online/api/orders/');
         const data = response.data;
 
         // Transform the data to match the format required for the component

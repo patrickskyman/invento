@@ -35,7 +35,7 @@ const PrintBarcode: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response: AxiosResponse<Product[]> = await axios.get("http://127.0.0.1:8000/api/products/");
+        const response: AxiosResponse<Product[]> = await axios.get("https://inventoryr.online/api/products/");
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -55,7 +55,7 @@ const PrintBarcode: React.FC = () => {
     try {
       const csrfToken = getCSRFToken();
       const response: AxiosResponse<{ quantity: number }> = await axios.post(
-        "http://127.0.0.1:8000/scan-product/",
+        "https://inventoryr.online/scan-product/",
         {
           sku: product.sku,
           action: "add_to_basket",

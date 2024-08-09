@@ -24,7 +24,7 @@ const AddProductContainer: React.FC = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/categories/');
+        const response = await axios.get('https://inventoryr.online/api/categories/');
         setCategories(response.data);
       } catch (error) {
         console.error('There was an error fetching the categories!', error);
@@ -51,7 +51,7 @@ const AddProductContainer: React.FC = () => {
     formData.append('expiry_date', expiryDate.toISOString().split('T')[0]);
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/products/', formData, {
+      const response = await axios.post('https://inventoryr.online/api/products/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

@@ -16,9 +16,9 @@ const RecentOrders = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const ordersResponse = await axios.get("http://127.0.0.1:8000/api/orders/");
-        const salesResponse = await axios.get("http://127.0.0.1:8000/api/sales/");
-        const productsResponse = await axios.get("http://127.0.0.1:8000/api/products/");
+        const ordersResponse = await axios.get("https://inventoryr.online/api/orders/");
+        const salesResponse = await axios.get("https://inventoryr.online/api/sales/");
+        const productsResponse = await axios.get("https://inventoryr.online/api/products/");
 
         setOrdersData(ordersResponse.data);
         setSalesData(salesResponse.data);

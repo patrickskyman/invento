@@ -36,7 +36,7 @@ const ExtraLargeModal = ({ product, isOpen, toggle }) => {
     });
     
     try {
-      await axios.put(`http://127.0.0.1:8000/api/products/${formData.id}/`, data, {
+      await axios.put(`https://inventoryr.online/api/products/${formData.id}/`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         }
