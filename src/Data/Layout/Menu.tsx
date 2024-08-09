@@ -15,12 +15,12 @@ export const MenuList: MenuItem[] | undefined = [
         children: [
           { path: "/inventory/add_product", title: "Add Product", type: "link" },
           { path: "/inventory/product_list", title: "Product List", type: "link" },
-          { path: "/inventory/products", title: "Products", type: "link" },
           { path: "/inventory/expired-products", title: "Expired Products", type: "link" },
           { path: "/inventory/low-stocks", title: "Low Stocks", type: "link" },
         ],
       },
       { path: "", icon: "email", title: "Letter Box", type: "link", id: 7 },
+      { path: "/inventory/pos", icon: "form", title: "POS", type: "link", id: 87 },
       {
         title: "Variants",
         id: 5,
@@ -38,8 +38,8 @@ export const MenuList: MenuItem[] | undefined = [
         icon: "ecommerce",
         type: "sub",
         children: [
-          { path: "/inventory/print-barcode", title: "Print Barcode", type: "link" },
-          { path: "/inventory/print-qr-code", title: "Print QR Code", type: "link" },
+          { path: "/inventory/print-barcode", title: "Print Barcode", type: "link", id: 799 },
+          { path: "/inventory/print-qr-code", title: "Print QR Code", type: "link", id:3535 },
         ],
       },
       {
@@ -157,7 +157,7 @@ export const MenuList: MenuItem[] | undefined = [
           { path: "/settings/system",  title: "System Settings", type: "link" },
           { path: "/settings/financial", title: "Financial Settings", type: "link" },
           { path: "/settings/other",  title: "Other Settings", type: "link" },
-          { path: "/auth/logout",  title: "Logout", type: "link" },
+          { path: "/auth/login",  title: "Logout", type: "link" },
         ],
       },
 

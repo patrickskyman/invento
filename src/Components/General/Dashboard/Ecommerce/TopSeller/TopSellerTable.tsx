@@ -2,20 +2,19 @@ import { Input, Label, Table } from "reactstrap";
 import TopSellerTableBody from "./TopSellerTableBody";
 import PaginationDynamic from "@/utils/Paginations";
 import { useMemo, useState } from "react";
-import { TopSellerTableData } from "@/Data/General/Dashboard/Ecommerce";
 
-const TopSellerTable = () => {
+const TopSellerTable = ({ topSellers }: { topSellers: any[] }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const itemsPerPage = 4;
-  const totalItems = TopSellerTableData.length;
+  const totalItems = topSellers.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   const currentItems = useMemo(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    return TopSellerTableData.slice(startIndex, endIndex);
-  }, [currentPage]);
+    return topSellers.slice(startIndex, endIndex);
+  }, [currentPage, topSellers]);
 
   return (
     <div className="table-responsive theme-scrollbar dataTables_wrapper">
@@ -28,9 +27,8 @@ const TopSellerTable = () => {
                 <Label check />
               </div>
             </th>
-            <th>Seller Name</th>
-            <th>Brand Name</th>
             <th>Product</th>
+            <th>Brand</th>
             <th>Sold</th>
             <th>Price</th>
             <th>Earnings</th>

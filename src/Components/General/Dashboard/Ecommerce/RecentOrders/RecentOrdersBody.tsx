@@ -1,14 +1,25 @@
+// RecentOrdersBody.js
 import { ImagePath } from "@/Constant";
 import { useAppSelector } from "@/Redux/Hooks";
 import { RecentOrdersBodyType } from "@/Types/DashboardType";
 import Link from "next/link";
 import { Button, Input, Label } from "reactstrap";
 
-const RecentOrdersBody :React.FC<RecentOrdersBodyType> = ({currentItems}) => {
-const { i18LangStatus } = useAppSelector((store) => store.langSlice);
-   return (
+const RecentOrdersBody = ({ currentItems, salesData, productsData }) => {
+  const { i18LangStatus } = useAppSelector((store) => store.langSlice);
+
+  const calculateTotalPrice = (order) => {
+    return order.products.reduce((total, productId) => {
+      const productSales = salesData.filter(sale => sale.product === productId);
+      const product = productsData.find(p => p.id === productId);
+      const productTotal = productSales.reduce((sum, sale) => sum + (product ? product.selling_price * sale.quantity : 0), 0);
+      return total + productTotal;
+    }, 0);
+  };
+
+  return (
     <tbody>
-      {currentItems.map((data, i) => (
+      {currentItems.map((order, i) => (
         <tr key={i}>
           <td>
             <div className="form-check">
@@ -18,32 +29,28 @@ const { i18LangStatus } = useAppSelector((store) => store.langSlice);
           </td>
           <td>
             <div className="d-flex align-items-center gap-2">
-              <div className="flex-shrink-0">
-                <img src={`${ImagePath}/dashboard-3/${data.image}`} alt="dashboard-3" />
-              </div>
               <div className="flex-grow-1">
-                <Link href={`/ecommerce/checkout`}><h6>{data.order}</h6></Link>
+                <Link href={`/ecommerce/checkout`}><h6>Order #{order.id}</h6></Link>
               </div>
             </div>
           </td>
-          <td>{data.date}</td>
-          <td>QTY:{data.quantity}</td>
+          <td>{new Date(order.created_at).toLocaleDateString()}</td>
+          <td>QTY:{order.products.length}</td>
           <td className="customer-img">
             <div className="d-flex align-items-center gap-2">
-              <div className="flex-shrink-0">
-                <img src={`${ImagePath}/dashboard-3/user/${data.image1}`} alt="dashboard-3" />
-              </div>
               <div className="flex-grow-1">
-                <h6>{data.name}</h6>
+                <h6>{order.customer_name}</h6>
               </div>
             </div>
           </td>
           <td>
-            <p>${data.amount}</p>
+            <p>Ksh{calculateTotalPrice(order).toFixed(2)}</p>
           </td>
           <td>
             <div className="status-box">
-              <Button className={`background-light-${data.color} font-${data.color} f-w-500`} color="transparent">{data.status}</Button>
+              <Button className={`background-light-${order.fulfilled ? "success" : "danger"} font-${order.fulfilled ? "success" : "danger"} f-w-500`} color="transparent">
+                {order.fulfilled ? "Fulfilled" : "Pending"}
+              </Button>
             </div>
           </td>
         </tr>

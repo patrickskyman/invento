@@ -31,15 +31,21 @@ export interface SelectCommonProp {
 }
 
 export interface ProductListTableDataColumnType {
-  image: string;
+  id: number;
   name: string;
+  description: string;
+  category: string; // Assuming the category will be fetched as a string name
   sku: string;
-  category: string;
-  price: number;
+  barcode: string;
   quantity: number;
-  status: string;
-  rating: number;
+  reorder_level: number;
+  qr_code: string;
+  buying_price: number;
+  selling_price: number;
+  manufacture_date: string;
+  expiry_date: string;
 }
+
 
 export interface ProductListTableProduct {
   images?: string;

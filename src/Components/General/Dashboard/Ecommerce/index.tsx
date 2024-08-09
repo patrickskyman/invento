@@ -5,10 +5,8 @@ import RecentOrders from "./RecentOrders";
 import SalesOverview from "./SalesOverview";
 import RecentCustomers from "./RecentCustomers";
 import RevenueByCategory from "./RevenueByCategory";
-import UserByContinent from "./UserByContinent";
-import ProductSlider from "./ProductSlider";
 import TopSeller from "./TopSeller/TopSeller";
-import SalesStatistic from "../DefaultDashboard/SalesStatistic";
+import SalesStatistic from "./SalesStatistic";
 
 const EcommerceContainer = () => {
   return (

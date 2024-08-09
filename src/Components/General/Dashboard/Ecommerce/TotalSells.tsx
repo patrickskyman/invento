@@ -1,14 +1,145 @@
+'use client'
 import { ImagePath } from "@/Constant";
-import { TopSellData } from "@/Data/General/Dashboard/Ecommerce";
 import ReactApexChart from "react-apexcharts";
-import { Card, CardBody, Col } from "reactstrap";
+import { Card, CardBody, Col, Row } from "reactstrap";
 import DashboardCommonHeader from "../common/DashboardCommonHeader";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const TotalSells = () => {
+  const [salesData, setSalesData] = useState([]);
+  const [ordersData, setOrdersData] = useState([]);
+  const [productsData, setProductsData] = useState([]);
+  const [totalSales, setTotalSales] = useState(0);
+  const [totalOrdersValue, setTotalOrdersValue] = useState(0);
+  const [dailyOrders, setDailyOrders] = useState(0);
+  const [dailyProfit, setDailyProfit] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const salesResponse = await axios.get("http://127.0.0.1:8000/api/sales/");
+        const ordersResponse = await axios.get("http://127.0.0.1:8000/api/orders/");
+        const productsResponse = await axios.get("http://127.0.0.1:8000/api/products/");
+
+        setSalesData(salesResponse.data);
+        setOrdersData(ordersResponse.data);
+        setProductsData(productsResponse.data);
+
+        setTotalSales(salesResponse.data.length);
+
+        // Calculate total orders value
+        const ordersValue = salesResponse.data.reduce((total, sale) => {
+          const product = productsResponse.data.find(p => p.id === sale.product);
+          return total + (product ? product.selling_price * sale.quantity : 0);
+        }, 0);
+        setTotalOrdersValue(ordersValue);
+
+        // Calculate daily orders
+        const today = new Date().toISOString().split('T')[0];
+        const dailyOrdersCount = ordersResponse.data.filter(order => 
+          order.created_at.startsWith(today)
+        ).length;
+        setDailyOrders(dailyOrdersCount);
+
+        // Calculate daily profit
+        const dailyProfit = salesResponse.data.reduce((total, sale) => {
+          const product = productsResponse.data.find(p => p.id === sale.product);
+          if (product) {
+            const profit = (product.selling_price - product.buying_price) * sale.quantity;
+            return total + profit;
+          }
+          return total;
+        }, 0);
+        setDailyProfit(dailyProfit);
+
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
+  const chartData = [
+    {
+      class: "total-sells",
+      title: "Total Sales",
+      image: "shopping1.png",
+      count: totalSales.toString(),
+      icon: "fa-arrow-up",
+      color: "success",
+      percentage: "+ 20.08%",
+      detail: "Compared to Jan 2023",
+      chartId: "admissionRatio",
+      chart: {
+        series: [{ name: "Sales", data: salesData.map(sale => sale.quantity) }],
+      }
+    },
+    {
+      class: "total-sells-2",
+      title: "Orders Value",
+      image: "coin1.png",
+      count: totalOrdersValue.toFixed(2),
+      icon: "fa-arrow-down",
+      color: "danger",
+      percentage: "- 10.02%",
+      detail: "Compared to Aug 2023",
+      chartId: "order-value",
+      chart: {
+        series: [{ 
+          name: "Orders Value", 
+          data: salesData.map(sale => {
+            const product = productsData.find(p => p.id === sale.product);
+            return product ? product.selling_price * sale.quantity : 0;
+          })
+        }],
+      }
+    },
+    {
+      class: "total-sells-3",
+      title: "Daily Orders",
+      image: "sent1.png",
+      count: dailyOrders.toString(),
+      icon: "fa-arrow-up",
+      color: "success",
+      percentage: "+ 13.23%",
+      detail: "Compared to may 2023",
+      chartId: "daily-value",
+      chart: {
+        series: [{ name: "Daily Orders", data: [dailyOrders] }],
+      }
+    },
+    {
+      class: "total-sells-4",
+      title: "Daily Profit",
+      image: "revenue1.png",
+      count: dailyProfit.toFixed(2),
+      icon: "fa-arrow-down",
+      color: "danger",
+      percentage: "- 17.06%",
+      detail: "Compared to july 2023",
+      chartId: "daily-profit",
+      chart: {
+        series: [{ 
+          name: "Daily Profit", 
+          data: salesData.map(sale => {
+            const product = productsData.find(p => p.id === sale.product);
+            if (product) {
+              return (product.selling_price - product.buying_price) * sale.quantity;
+            }
+            return 0;
+          })
+        }],
+      }
+    },
+  ];
+
   return (
-    <>
-      {TopSellData.map((data, i) => (
-        <Col xl="3" sm="6" key={i} className="daily-revenue-card">
+    <Row>
+      {chartData.map((data, index) => (
+        <Col xl="3" sm="6" key={index} className="daily-revenue-card">
           <Card>
             <DashboardCommonHeader title={data.title} />
             <CardBody className={`pb-0 ${data.class}`}>
@@ -23,18 +154,24 @@ const TotalSells = () => {
                       <p className={`mb-0 up-arrow bg-light-${data.color}`}>
                         <i className={`fa ${data.icon} text-${data.color}`} />
                       </p>
-                      <span className={`f-w-500 font-${data.color}`}>{data.percentage}</span>
+                   
                     </div>
                   </div>
-                  <p className="text-truncate">{data.detail}</p>
+
                 </div>
               </div>
-              <ReactApexChart id={data.chartId} options={data.chart} series={data.chart.series} type="area" height={90} />
+              <ReactApexChart
+                id={data.chartId}
+                options={data.chart}
+                series={data.chart.series}
+                type="area"
+                height={90}
+              />
             </CardBody>
           </Card>
         </Col>
       ))}
-    </>
+    </Row>
   );
 };
 

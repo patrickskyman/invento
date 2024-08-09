@@ -635,7 +635,7 @@ const ProductListTableAction = () => {
 
   return (
     <div className="product-action">
-      <Link href={`/inventory/add_product`}>
+      <Link href={`/inventory/edit_product`}>
         <SVG iconId="edit-content" />
       </Link>
       <SVG iconId="trash1" />
@@ -1041,4 +1041,4 @@ export const TypesOfProductData = [
   },
 ];
 
-export const ProductFiveNavData = ["Inventory"];
+export const ProductFiveNavData = ["Inventory", "Additional Options", "Shipping"];

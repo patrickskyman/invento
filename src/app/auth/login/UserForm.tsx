@@ -61,7 +61,6 @@ export const UserForm = () => {
               <Button color="primary" block className="w-100" onClick={formSubmitHandle}>{SignIn}</Button>
             </div>
           </FormGroup>
-          <h6 className="text-muted mt-4 or">{OrSignInWith}</h6>
           <UserSocialApp />
           <p className="mt-4 mb-0 text-center">{DontHaveAccount}
             <Link className="ms-2" href={`/authentication/registersimple`}>{CreateAccount}</Link>

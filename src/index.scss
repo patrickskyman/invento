@@ -1,3 +1,101 @@
 @import "/public/assets/scss/app.scss";
 
  
+/* Container for the form element */
+.mb-3.add-product {
+    margin-bottom: 1.5rem; /* Space below the element */
+    background-color: #f9f9f9; /* Light background color */
+    padding: 1rem; /* Space inside the element */
+    border-radius: 8px; /* Rounded corners */
+    border: 1px solid #e0e0e0; /* Light border color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  /* Container for the "Add New" section */
+  .add-newplus {
+    display: flex; /* Align items in a row */
+    justify-content: space-between; /* Space between elements */
+    align-items: center; /* Vertically center elements */
+    margin-bottom: 1rem; /* Space below the container */
+  }
+  
+  /* Label styling */
+  .add-newplus .form-label {
+    font-size: 1rem; /* Font size for the label */
+    font-weight: bold; /* Make the label text bold */
+    color: #333; /* Dark color for the text */
+  }
+  
+  /* Link styling for adding new items */
+  .add-newplus a {
+    display: flex; /* Align items in a row */
+    align-items: center; /* Vertically center items */
+    text-decoration: none; /* Remove underline from link */
+    color: #007bff; /* Primary color for the link */
+    font-size: 0.875rem; /* Font size for the link */
+  }
+  
+  .add-newplus a:hover {
+    color: #0056b3; /* Darker color on hover */
+  }
+  
+  /* Icon styling */
+  .add-newplus i.plus-down-add {
+    margin-right: 0.5rem; /* Space between icon and text */
+    color: #007bff; /* Match icon color with link */
+  }
+  
+  /* Select element styling */
+  .select {
+    width: 100%; /* Full width of the parent container */
+    padding: 0.5rem; /* Space inside the select box */
+    border: 1px solid #ced4da; /* Light border color */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #fff; /* White background */
+    font-size: 1rem; /* Font size for the select */
+  }
+  
+  /* Option styling */
+  .select option {
+    padding: 0.5rem; /* Space inside each option */
+  }
+
+/* PrintBarcode.css */
+.barcode-image {
+  max-width: 100px; /* Adjust this value as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.product-order-list {
+  background-color: #f8f9fa; /* Light background color */
+  color: #333; /* Dark text color for readability */
+}
+
+.product-order-list .total {
+  color: #333; /* Ensure text color is readable */
+}
+
+.product-order-list .product-list {
+  color: #333; /* Ensure text color is readable */
+}
+
+.qty-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Space between controls */
+}
+
+.qty-item .btn-icon {
+  font-size: 18px; /* Smaller icons */
+}
+
+.qty-item input.form-control {
+  width: 60px; /* Adjust width */
+  text-align: center; /* Center text */
+  font-size: 14px; /* Smaller font size */
+}
+
+.search-bar-margin {
+  margin-right: 10px; /* Adjust the value as needed */
+}
